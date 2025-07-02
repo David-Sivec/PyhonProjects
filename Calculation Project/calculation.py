@@ -1,17 +1,21 @@
-import tkinter as tk
-
-root = tk.Tk()
-root.title("Moja aplikácia")
-root.geometry("300x400")
-
-label = tk.Label(root, text="Zadaj číslo:")
-label.pack()
-entry = tk.Entry(root)
-entry.pack()
-def klik():
-    print("Klik!")
-
-button = tk.Button(root, text="Klikni", command=klik)
-button.pack()
-# Spustenie hlavnej slučky
-root.mainloop()
+calculation = input("Enter a quation like this 'number1' 'operator' 'number2': ")
+try:
+  number1 = float(calculation[0])
+  operator = calculation[2]
+  number2 = float(calculation[4])
+  if operator == "+":
+    result = number1 + number2
+  elif operator== "-":
+    result = number1 - number2
+  elif operator == "*":
+    result = number1 * number2
+  elif operator == "/":
+    if number2 == 0:
+      result = "Error: Division by zero is not allowed."
+    else:
+      result = number1 / number2
+  else:
+    result = "Error: Invalid operator. Use +, -, *, or /."
+  print(f"The result of {calculation} is: {result}")
+except (ValueError, IndexError):
+  print("Error: Please enter a valid calculation in the format 'number1 operator number2'.")
